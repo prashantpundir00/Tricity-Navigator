@@ -1,0 +1,23 @@
+{
+  "name": "ai-smart-route-planner-campus-navigator",
+  "version": "1.0.0",
+  "description": "AI Smart Route Planner & Campus Navigator using Node.js, Express, and HTML/CSS/JavaScript.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "route-planner",
+    "campus-navigator",
+    "dijkstra",
+    "bfs",
+    "dfs",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3"
+  }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Smart Route Planner & Campus Navigator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="intro">
+      <p class="eyebrow">Tricity Campus Navigator</p>
+      <h1>AI Smart Route Planner</h1>
+      <p class="intro-text">
+        Plan beginner-friendly routes across CU, Kharar, Mohali, and Chandigarh using graph algorithms.
+      </p>
+    </section>
+
+    <section class="planner-panel" aria-label="Route planner controls">
+      <div class="field-group">
+        <label for="source">Source</label>
+        <select id="source"></select>
+      </div>
+
+      <div class="swap-mark" aria-hidden="true">to</div>
+
+      <div class="field-group">
+        <label for="destination">Destination</label>
+        <select id="destination"></select>
+      </div>
+
+      <div class="button-row">
+        <button id="findRouteBtn" class="primary-btn">Find Route</button>
+        <button id="bfsBtn">BFS</button>
+        <button id="dfsBtn">DFS</button>
+      </div>
+    </section>
+
+    <section class="visual-section" aria-label="Route and algorithm visuals">
+      <article class="visual-card">
+        <div class="section-heading">
+          <span class="card-label">Map Route</span>
+          <h2>Live Route Map</h2>
+        </div>
+        <div class="map-board" id="mapBoard">
+          <svg id="mapSvg" viewBox="0 0 920 620" role="img" aria-label="Map route visualization"></svg>
+        </div>
+        <p id="mapInfo" class="visual-note">The selected path will be highlighted on the map.</p>
+      </article>
+
+      <article class="visual-card">
+        <div class="section-heading">
+          <span class="card-label">Algorithm Graph</span>
+          <h2 id="graphTitle">Graph Exploration</h2>
+        </div>
+        <div class="graph-board" id="graphBoard">
+          <svg id="graphSvg" viewBox="0 0 920 620" role="img" aria-label="Graph algorithm visualization"></svg>
+        </div>
+        <p id="algorithmInfo" class="visual-note">BFS, DFS, and Dijkstra color the graph differently.</p>
+      </article>
+    </section>
+
+    <section class="output-section" aria-label="Route output">
+      <div class="path-board">
+        <div class="route-line" id="routeLine"></div>
+      </div>
+
+      <div class="result-grid">
+        <article class="result-card highlight">
+          <span class="card-label">Shortest Path</span>
+          <h2 id="pathOutput">Select locations to begin</h2>
+          <p id="distanceOutput">Distance will appear here.</p>
+        </article>
+
+        <article class="result-card">
+          <span class="card-label">Nodes Visited</span>
+          <h2 id="visitedOutput">0</h2>
+          <p>Graph nodes checked by the selected algorithm.</p>
+        </article>
+
+        <article class="result-card">
+          <span class="card-label">AI Suggestion</span>
+          <h2 id="trafficOutput">Ready</h2>
+          <p id="aiOutput">The route explanation will appear after calculation.</p>
+        </article>
+
+        <article class="result-card">
+          <span class="card-label">BFS vs DFS</span>
+          <h2 id="compareTitle">Compare traversals</h2>
+          <p id="compareOutput">Use BFS and DFS buttons to compare how the graph is explored.</p>
+        </article>
+
+        <article class="result-card wide-card">
+          <span class="card-label">How It Works</span>
+          <h2 id="howTitle">Algorithm explanation</h2>
+          <p id="howOutput">Dijkstra highlights the lowest-distance route. BFS expands level by level. DFS follows one branch deeply before backtracking.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

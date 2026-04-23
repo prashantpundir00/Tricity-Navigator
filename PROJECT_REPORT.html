@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Smart Route Planner & Campus Navigator - Project Report</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: #1d2733;
+      background: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    main {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      color: #0f6f55;
+      font-size: 30px;
+      line-height: 1.12;
+      text-align: center;
+    }
+
+    h2 {
+      margin: 0 0 26px;
+      color: #334155;
+      font-size: 18px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    h3 {
+      margin: 22px 0 9px;
+      color: #0f6f55;
+      font-size: 17px;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 5px;
+    }
+
+    h4 {
+      margin: 16px 0 8px;
+      color: #233244;
+      font-size: 14px;
+    }
+
+    p {
+      margin: 0 0 8px;
+    }
+
+    ul {
+      margin: 6px 0 10px 22px;
+      padding: 0;
+    }
+
+    li {
+      margin: 2px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 14px;
+      page-break-inside: avoid;
+    }
+
+    th,
+    td {
+      border: 1px solid #cbd5e1;
+      padding: 7px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #e8f4ef;
+      color: #12382d;
+    }
+
+    pre {
+      margin: 10px 0 14px;
+      padding: 11px;
+      color: #142033;
+      background: #f3f6f9;
+      border: 1px solid #d7dee8;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      page-break-inside: avoid;
+    }
+
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 11px;
+    }
+
+    p code,
+    li code,
+    td code {
+      background: #eef2f7;
+      padding: 1px 4px;
+      border-radius: 4px;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #e2e8f0;
+      margin: 18px 0;
+    }
+  </style>
+</head>
+<body>
+  <main>
+<h1>AI Smart Route Planner &amp; Campus Navigator</h1>
+<h2>Project Report</h2>
+<p><strong>Project Title:</strong> AI Smart Route Planner &amp; Campus Navigator  </p>
+<p><strong>Subject:</strong> Design and Analysis of Algorithms Lab  </p>
+<p><strong>Submitted By:</strong> 25MCA20171  </p>
+<p><strong>Technology Used:</strong> Node.js, Express.js, HTML, CSS, JavaScript  </p>
+<p><strong>Algorithm Focus:</strong> BFS, DFS, and Dijkstra's Algorithm</p>
+<h3>1. Introduction</h3>
+<p>The <strong>AI Smart Route Planner &amp; Campus Navigator</strong> is a full-stack web application developed using <strong>Node.js</strong>, <strong>Express.js</strong>, <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>. The project helps users find routes between important locations in the Tricity region, including Chandigarh, Mohali, Kharar, and Chandigarh University.</p>
+<p>The project represents locations as a graph, where each location is a node and each road connection is an edge with a distance value. Graph algorithms such as <strong>BFS</strong>, <strong>DFS</strong>, and <strong>Dijkstra's Algorithm</strong> are used to explore routes and calculate the shortest path.</p>
+<p>The system also includes a simple rule-based AI feature that explains why a route is suitable and simulates traffic conditions using basic logic.</p>
+<hr>
+<h3>2. Project Objectives</h3>
+<p>The main objectives of this project are:</p>
+<ul>
+<li>To represent Tricity locations using a graph data structure.</li>
+<li>To store connected locations with distances.</li>
+<li>To implement BFS traversal.</li>
+<li>To implement DFS traversal.</li>
+<li>To find the shortest route between a selected source and destination.</li>
+<li>To display route path, total distance, and number of visited nodes.</li>
+<li>To provide an intelligent route suggestion using simple rule-based AI.</li>
+<li>To compare BFS and DFS traversal behavior.</li>
+<li>To build a clean and responsive user interface.</li>
+<li>To create a beginner-friendly full-stack project structure.</li>
+</ul>
+<hr>
+<h3>3. Technologies Used</h3>
+<table><thead><tr><th>Technology</th><th>Purpose</th></tr></thead><tbody><tr><td>Node.js</td><td>Runtime environment for backend JavaScript</td></tr><tr><td>Express.js</td><td>Backend server and API routing</td></tr><tr><td>HTML</td><td>Frontend page structure</td></tr><tr><td>CSS</td><td>Styling, layout, responsiveness, and animations</td></tr><tr><td>JavaScript</td><td>Frontend interactivity and backend graph logic</td></tr><tr><td>JSON</td><td>API request and response format</td></tr></tbody></table>
+<hr>
+<h3>4. Project Structure</h3>
+<pre><code class="language-text">Project2/
+  package.json
+  package-lock.json
+  server.js
+  PROJECT_REPORT.md
+  public/
+    index.html
+    styles.css
+    script.js</code></pre>
+<h4>File Description</h4>
+<table><thead><tr><th>File</th><th>Description</th></tr></thead><tbody><tr><td><code>server.js</code></td><td>Contains Express server, graph data, BFS, DFS, Dijkstra, AI logic, and API routes</td></tr><tr><td><code>package.json</code></td><td>Stores project metadata, scripts, and dependencies</td></tr><tr><td><code>package-lock.json</code></td><td>Stores exact installed dependency versions</td></tr><tr><td><code>public/index.html</code></td><td>Contains frontend layout and UI elements</td></tr><tr><td><code>public/styles.css</code></td><td>Contains modern responsive design and animations</td></tr><tr><td><code>public/script.js</code></td><td>Handles frontend API calls and displays results</td></tr><tr><td><code>PROJECT_REPORT.md</code></td><td>Project documentation and report</td></tr></tbody></table>
+<hr>
+<h3>5. Graph System</h3>
+<p>The project uses an <strong>adjacency list</strong> to represent the graph. In an adjacency list, each location stores a list of directly connected neighboring locations along with the distance between them.</p>
+<h4>Locations Included</h4>
+<p><strong>Chandigarh</strong></p>
+<ul>
+<li>Sector17</li>
+<li>SukhnaLake</li>
+<li>PGI</li>
+<li>Elante</li>
+<li>RockGarden</li>
+</ul>
+<p><strong>Mohali</strong></p>
+<ul>
+<li>Phase7</li>
+<li>Phase5</li>
+<li>QuarkCity</li>
+<li>ISBT</li>
+<li>PCAStadium</li>
+<li>VRPunjab</li>
+</ul>
+<p><strong>Other Locations</strong></p>
+<ul>
+<li>CU</li>
+<li>Kharar</li>
+</ul>
+<h4>Example Graph Representation</h4>
+<pre><code class="language-javascript">CU: [
+  { node: &quot;Kharar&quot;, distance: 7 },
+  { node: &quot;Phase7&quot;, distance: 16 }
+]</code></pre>
+<p>This means:</p>
+<ul>
+<li>CU is connected to Kharar with a distance of 7 km.</li>
+<li>CU is connected to Phase7 with a distance of 16 km.</li>
+</ul>
+<p>The complete graph is stored in <code>server.js</code>.</p>
+<hr>
+<h3>6. Algorithms Used</h3>
+<h2>6.1 Breadth First Search</h2>
+<p><strong>Breadth First Search</strong>, or <strong>BFS</strong>, explores a graph level by level. It first visits the source node, then all directly connected neighbors, then the neighbors of those neighbors.</p>
+<h4>Use in Project</h4>
+<p>In this project, BFS is used to:</p>
+<ul>
+<li>Traverse all connected locations from a selected source.</li>
+<li>Find a route with fewer stops for comparison.</li>
+<li>Show how graph exploration works level by level.</li>
+</ul>
+<h4>BFS Characteristics</h4>
+<table><thead><tr><th>Feature</th><th>Description</th></tr></thead><tbody><tr><td>Data structure used</td><td>Queue</td></tr><tr><td>Traversal style</td><td>Level by level</td></tr><tr><td>Best for</td><td>Fewer-stop route discovery in unweighted graphs</td></tr><tr><td>Time complexity</td><td>O(V + E)</td></tr></tbody></table>
+<p>Here, <code>V</code> is the number of vertices or nodes, and <code>E</code> is the number of edges.</p>
+<hr>
+<h2>6.2 Depth First Search</h2>
+<p><strong>Depth First Search</strong>, or <strong>DFS</strong>, explores a graph by going as deep as possible on one path before backtracking.</p>
+<h4>Use in Project</h4>
+<p>In this project, DFS is used to:</p>
+<ul>
+<li>Traverse all locations from a selected source.</li>
+<li>Compare traversal behavior with BFS.</li>
+<li>Show deep exploration of graph connections.</li>
+</ul>
+<h4>DFS Characteristics</h4>
+<table><thead><tr><th>Feature</th><th>Description</th></tr></thead><tbody><tr><td>Data structure used</td><td>Recursion / Stack</td></tr><tr><td>Traversal style</td><td>Deep path first</td></tr><tr><td>Best for</td><td>Graph exploration and connectivity checking</td></tr><tr><td>Time complexity</td><td>O(V + E)</td></tr></tbody></table>
+<hr>
+<h2>6.3 Dijkstra's Algorithm</h2>
+<p><strong>Dijkstra's Algorithm</strong> is used to find the shortest path in a weighted graph. Since this project stores distances between locations, Dijkstra is the most suitable algorithm for finding the route with the minimum total distance.</p>
+<h4>Use in Project</h4>
+<p>In this project, Dijkstra's Algorithm is used in the main <strong>Find Route</strong> feature.</p>
+<p>It returns:</p>
+<ul>
+<li>Shortest path</li>
+<li>Total distance</li>
+<li>Number of nodes visited</li>
+<li>AI route explanation</li>
+<li>BFS comparison route</li>
+</ul>
+<h4>Dijkstra Characteristics</h4>
+<table><thead><tr><th>Feature</th><th>Description</th></tr></thead><tbody><tr><td>Graph type</td><td>Weighted graph</td></tr><tr><td>Main purpose</td><td>Shortest distance route</td></tr><tr><td>Data tracked</td><td>Distance and previous node</td></tr><tr><td>Output</td><td>Minimum distance path</td></tr></tbody></table>
+<hr>
+<h3>7. Backend API Routes</h3>
+<p>The backend provides the following API routes:</p>
+<h2>7.1 <code>/locations</code></h2>
+<h4>Method</h4>
+<pre><code class="language-text">GET</code></pre>
+<h4>Purpose</h4>
+<p>Returns all available locations for the frontend dropdown menus.</p>
+<h4>Example Response</h4>
+<pre><code class="language-json">{
+  &quot;locations&quot;: [&quot;CU&quot;, &quot;Elante&quot;, &quot;ISBT&quot;, &quot;Kharar&quot;, &quot;PCAStadium&quot;]
+}</code></pre>
+<hr>
+<h2>7.2 <code>/find-route</code></h2>
+<h4>Method</h4>
+<pre><code class="language-text">POST</code></pre>
+<h4>Purpose</h4>
+<p>Finds the shortest route between source and destination using Dijkstra's Algorithm.</p>
+<h4>Example Request</h4>
+<pre><code class="language-json">{
+  &quot;source&quot;: &quot;CU&quot;,
+  &quot;destination&quot;: &quot;Sector17&quot;
+}</code></pre>
+<h4>Example Response</h4>
+<pre><code class="language-json">{
+  &quot;algorithm&quot;: &quot;Dijkstra&quot;,
+  &quot;path&quot;: [&quot;CU&quot;, &quot;Phase7&quot;, &quot;PCAStadium&quot;, &quot;Sector17&quot;],
+  &quot;distance&quot;: 28,
+  &quot;visitedCount&quot;: 9,
+  &quot;traffic&quot;: &quot;Moderate&quot;,
+  &quot;aiExplanation&quot;: &quot;This route is better because it covers 28 km with 3 stops.&quot;
+}</code></pre>
+<hr>
+<h2>7.3 <code>/bfs</code></h2>
+<h4>Method</h4>
+<pre><code class="language-text">POST</code></pre>
+<h4>Purpose</h4>
+<p>Performs BFS traversal from the selected source location.</p>
+<h4>Example Request</h4>
+<pre><code class="language-json">{
+  &quot;source&quot;: &quot;CU&quot;,
+  &quot;destination&quot;: &quot;Sector17&quot;
+}</code></pre>
+<h4>Output</h4>
+<ul>
+<li>BFS traversal order</li>
+<li>Number of visited nodes</li>
+<li>BFS route if destination is selected</li>
+</ul>
+<hr>
+<h2>7.4 <code>/dfs</code></h2>
+<h4>Method</h4>
+<pre><code class="language-text">POST</code></pre>
+<h4>Purpose</h4>
+<p>Performs DFS traversal from the selected source location.</p>
+<h4>Example Request</h4>
+<pre><code class="language-json">{
+  &quot;source&quot;: &quot;CU&quot;
+}</code></pre>
+<h4>Output</h4>
+<ul>
+<li>DFS traversal order</li>
+<li>Number of visited nodes</li>
+</ul>
+<hr>
+<h3>8. AI Feature</h3>
+<p>The AI feature in this project is rule-based and beginner-friendly. It does not use a complex machine learning model. Instead, it analyzes the selected route using simple conditions.</p>
+<h4>AI Logic Includes</h4>
+<ul>
+<li>Total route distance</li>
+<li>Number of stops</li>
+<li>Comparison with BFS route</li>
+<li>Traffic simulation based on busy places</li>
+</ul>
+<h4>Busy Locations Used for Traffic Simulation</h4>
+<ul>
+<li>Sector17</li>
+<li>Elante</li>
+<li>ISBT</li>
+<li>PCAStadium</li>
+</ul>
+<h4>Traffic Rules</h4>
+<table><thead><tr><th>Condition</th><th>Traffic Level</th></tr></thead><tbody><tr><td>Route includes 3 or more busy places</td><td>High</td></tr><tr><td>Route includes 2 busy places</td><td>Moderate</td></tr><tr><td>Route includes 0 or 1 busy place</td><td>Light</td></tr></tbody></table>
+<h4>Example AI Explanation</h4>
+<pre><code class="language-text">This route is better because it covers 28 km with 3 stops.
+It also matches the simple BFS route distance for this trip.
+Traffic looks moderate because the route touches a few busy locations.</code></pre>
+<hr>
+<h3>9. Frontend Features</h3>
+<p>The frontend is built using HTML, CSS, and JavaScript.</p>
+<h4>Main UI Features</h4>
+<ul>
+<li>Source dropdown</li>
+<li>Destination dropdown</li>
+<li>Find Route button</li>
+<li>BFS button</li>
+<li>DFS button</li>
+<li>Shortest path card</li>
+<li>Distance card</li>
+<li>Nodes visited card</li>
+<li>AI suggestion card</li>
+<li>BFS vs DFS comparison card</li>
+<li>Responsive layout for mobile and desktop</li>
+<li>Hover effects and simple animations</li>
+<li>Highlighted shortest path display</li>
+</ul>
+<hr>
+<h3>10. Sample Output</h3>
+<h4>Input</h4>
+<pre><code class="language-text">Source: CU
+Destination: Sector17</code></pre>
+<h4>Output</h4>
+<pre><code class="language-text">Path: CU -&gt; Phase7 -&gt; PCAStadium -&gt; Sector17
+Total Distance: 28 km
+Nodes Visited: 9
+Traffic: Moderate</code></pre>
+<h4>AI Explanation</h4>
+<pre><code class="language-text">This route is better because it covers 28 km with 3 stops.
+It also matches the simple BFS route distance for this trip.
+Traffic looks moderate because the route touches a few busy locations.</code></pre>
+<hr>
+<h3>11. BFS vs DFS Comparison</h3>
+<table><thead><tr><th>Basis</th><th>BFS</th><th>DFS</th></tr></thead><tbody><tr><td>Full form</td><td>Breadth First Search</td><td>Depth First Search</td></tr><tr><td>Approach</td><td>Visits nearby nodes first</td><td>Goes deep first</td></tr><tr><td>Data structure</td><td>Queue</td><td>Stack or recursion</td></tr><tr><td>Shortest path use</td><td>Useful in unweighted graphs</td><td>Not used for shortest path</td></tr><tr><td>Project use</td><td>Traversal and fewer-stop route comparison</td><td>Traversal comparison</td></tr></tbody></table>
+<p>In this project, BFS and DFS help students understand different graph traversal methods. Dijkstra is used for the final shortest-distance route because the graph has weighted edges.</p>
+<hr>
+<h3>12. How to Run the Project</h3>
+<h4>Step 1: Open Project Folder</h4>
+<p>Open the following folder in VS Code:</p>
+<pre><code class="language-text">P:\MCA\Semester 2\Projects\Project2</code></pre>
+<h4>Step 2: Install Dependencies</h4>
+<p>Run this command in the VS Code terminal:</p>
+<pre><code class="language-bash">npm install</code></pre>
+<h4>Step 3: Start the Server</h4>
+<p>Run:</p>
+<pre><code class="language-bash">npm start</code></pre>
+<h4>Step 4: Open in Browser</h4>
+<p>Open this URL:</p>
+<pre><code class="language-text">http://localhost:3000</code></pre>
+<hr>
+<h3>13. Testing</h3>
+<p>The project was tested using API requests and browser interaction.</p>
+<h4>Test Case 1</h4>
+<table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Source</td><td>CU</td></tr><tr><td>Destination</td><td>Sector17</td></tr><tr><td>Expected result</td><td>Shortest route should be displayed</td></tr><tr><td>Actual result</td><td>CU -&gt; Phase7 -&gt; PCAStadium -&gt; Sector17</td></tr><tr><td>Status</td><td>Passed</td></tr></tbody></table>
+<h4>Test Case 2</h4>
+<table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Action</td><td>Click BFS</td></tr><tr><td>Expected result</td><td>BFS traversal order should be displayed</td></tr><tr><td>Actual result</td><td>BFS traversal displayed successfully</td></tr><tr><td>Status</td><td>Passed</td></tr></tbody></table>
+<h4>Test Case 3</h4>
+<table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td>Action</td><td>Click DFS</td></tr><tr><td>Expected result</td><td>DFS traversal order should be displayed</td></tr><tr><td>Actual result</td><td>DFS traversal displayed successfully</td></tr><tr><td>Status</td><td>Passed</td></tr></tbody></table>
+<hr>
+<h3>14. Advantages</h3>
+<ul>
+<li>Simple and beginner-friendly implementation.</li>
+<li>Demonstrates practical use of graph algorithms.</li>
+<li>Includes full-stack development concepts.</li>
+<li>Provides a modern and responsive UI.</li>
+<li>Uses weighted graph routing.</li>
+<li>Includes simple AI-based explanation.</li>
+<li>Helps compare BFS, DFS, and Dijkstra.</li>
+</ul>
+<hr>
+<h3>15. Limitations</h3>
+<ul>
+<li>Traffic conditions are simulated using simple rules.</li>
+<li>Distances are sample values, not live map distances.</li>
+<li>The project does not use real GPS or map APIs.</li>
+<li>Dijkstra implementation is simple and does not use a priority queue.</li>
+<li>The AI feature is rule-based, not machine-learning based.</li>
+</ul>
+<hr>
+<h3>16. Future Scope</h3>
+<p>The project can be improved in the future by adding:</p>
+<ul>
+<li>Real map integration using Google Maps or OpenStreetMap.</li>
+<li>Live traffic data.</li>
+<li>User login and saved routes.</li>
+<li>Admin panel to add or update locations.</li>
+<li>Priority queue optimization for Dijkstra's Algorithm.</li>
+<li>Voice-based navigation instructions.</li>
+<li>Estimated travel time calculation.</li>
+<li>Route filtering based on traffic, distance, or number of stops.</li>
+</ul>
+<hr>
+<h3>17. Conclusion</h3>
+<p>The <strong>AI Smart Route Planner &amp; Campus Navigator</strong> successfully demonstrates how graph data structures and graph algorithms can be used in real-world navigation systems. The project allows users to select a source and destination, calculate the shortest route, view total distance, check visited nodes, and receive an AI-style route explanation.</p>
+<p>The project is useful for understanding BFS, DFS, Dijkstra's Algorithm, full-stack development, API communication, and responsive UI design. It is simple enough for beginners while still covering important computer science and web development concepts.</p>
+  </main>
+</body>
+</html>
